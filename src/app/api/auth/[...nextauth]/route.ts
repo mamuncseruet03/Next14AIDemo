@@ -24,16 +24,6 @@ const handler = NextAuth({
     // Note: This option is ignored if using JSON Web Tokens
     // updateAge: 24 * 60 * 60, // 24 hours
   },
-
-  // JSON Web tokens are only used for sessions if the `strategy: 'jwt'` session
-  // option is set - or by default if no database is specified.
-  // https://next-auth.js.org/configuration/options#jwt
-  jwt: {
-    // A secret to use for key generation (you should set this explicitly)
-    secret: process.env.AUTH_SECRET,
-    // Set to true to use encryption (default: false)
-    encryption: true
-  },
   callbacks: {
     
   }
