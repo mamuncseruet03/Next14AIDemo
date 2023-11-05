@@ -32,11 +32,7 @@ const handler = NextAuth({
     // A secret to use for key generation (you should set this explicitly)
     secret: process.env.AUTH_SECRET,
     // Set to true to use encryption (default: false)
-    encryption: true,
-    // You can define your own encode/decode functions for signing and encryption
-    // if you want to override the default behaviour.
-     encode: async ({ secret, token, maxAge }) => {},
-     decode: async ({ secret, token, maxAge }) => {},
+    encryption: true
   },
   callbacks: {
     
