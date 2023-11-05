@@ -12,6 +12,7 @@
     "@heroicons/react": "^2.0.18",
     "@next-auth/firebase-adapter": "0.0.2-canary.207",
     "firebase": "^10.5.2",
+    "firebase-admin": "^11.11.0",
     "next": "14.0.1",
     "next-auth": "^4.24.4",
     "react": "^18.2.0",
