@@ -29,9 +29,6 @@ export default async function RootLayout({
     <html>
       <head />
       <body>
-        <SessionProvider session={session}>
-      
-            
           
         <div className="flex">
           {/* Sidebar */}
@@ -46,8 +43,7 @@ export default async function RootLayout({
           {children}
           </div>
         </div>
-      
-        </SessionProvider>
+    
         </body>
     </html>
   )
