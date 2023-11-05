@@ -21,10 +21,6 @@ export default async function RootLayout({
   children: React.ReactNode
 }) {
   
-  const session = await getServerSession(handler)
-
-  console.log(session)
-  
   return (
     <html>
       <head />
