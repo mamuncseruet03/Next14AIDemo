@@ -7,6 +7,7 @@ import { db } from "../firebase/firebase";
 import ChatRow from "./ChatRow";
 import ModelSelecetion from "./ModelSelecetion";
 import NewChat from "./NewChat";
+import Image from 'next/image'
 
 const SideBar = () => {
   const { data: session } = useSession();
@@ -41,9 +42,11 @@ const SideBar = () => {
         </div>
       </div>
       {session && (
-        <img
+       <Image
           onClick={() => signOut()}
           src={session.user?.image!}
+          width={100}
+          height={100}
           alt="profile-pic"
           className="h-12 w-12 rounded-full mx-auto mb-2 hover:opacity-50 cursor-pointer"
         />
