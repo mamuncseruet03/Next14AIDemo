@@ -19,7 +19,7 @@ const ChatInput = ({ chatId }: Props) => {
   const { data: session } = useSession();
 
   const { data: model } = useSWR("model", {
-    fallbackData: "text-davinci-003",
+    fallbackData: "gpt-3.5-turbos",
   });
 
   const sendMessage = async (e: FormEvent<HTMLFormElement>) => {
@@ -29,7 +29,7 @@ const ChatInput = ({ chatId }: Props) => {
     const input = prompt.trim();
     setPrompt("");
 
-    const message: Message = {
+    const message = {
       text: input,
       createdAt: serverTimestamp(),
       user: {

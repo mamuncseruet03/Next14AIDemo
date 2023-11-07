@@ -1,28 +1,31 @@
+
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
-import query from "../../lib/queryApi";
+import query from "../../../lib/queryApi";
 import admin from "firebase-admin";
-import { adminDB } from "../../firebase/firebaseAdmin";
+import { adminDB } from "../../../firebase/firebaseAdmin";
+import { NextRequest, NextResponse } from "next/server";
+
 
 type Data = {
   answer: string;
 };
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
-) {
-  const { prompt, chatId, model, session } = req.body;
 
-  if (!prompt) {
-    res.status(400).json({ answer: "Please provide a prompt!" });
+
+export async function POST(req: NextRequest) {
+ 
+  const data = await req.json();
+
+  if (!data.prompt) {
+    NextResponse.json({ answer: "Please provide a prompt!" });
   }
 
-  if (!chatId) {
-    res.status(400).json({ answer: "Please provide valid Chat ID!" });
+  if (!data.chatId) {
+    NextResponse.json({ answer: "Please provide valid Chat ID!" });
   }
   //? ChatGPT Query
-  const response = await query(prompt, chatId, model);
+  const response = await query(data.prompt, data.chatId, data.model);
 
   const message = {
     text: response || "ChatGPT was unable to find an answer for that!",
@@ -37,11 +40,13 @@ export default async function handler(
 
   await adminDB
     .collection("users")
-    .doc(session?.user?.email)
+    .doc(data.session?.user?.email)
     .collection("chats")
-    .doc(chatId)
+    .doc(data.chatId)
     .collection("messages")
     .add(message);
 
-  res.status(200).json({ answer: message.text });
+    return NextResponse.json({ answer: message.text });
+ 
+
 }

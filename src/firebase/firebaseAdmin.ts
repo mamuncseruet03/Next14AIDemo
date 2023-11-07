@@ -1,9 +1,7 @@
 import admin from "firebase-admin";
 import { getApps } from "firebase-admin/app";
 
-const serviceAccount = JSON.parse(
-  process.env.FIREBASE_SERVICE_ACCOUNT_KEY as string
-);
+var serviceAccount = require("../../generateme-90b08-firebase-adminsdk-y40hb-ac32c6229d.json");
 
 if (!getApps().length) {
   admin.initializeApp({
