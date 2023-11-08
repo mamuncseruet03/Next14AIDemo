@@ -15,11 +15,6 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
   };
 
   const models = await openai.models.list();
-  console.log(models);
-  for await (const model of models) {
-    console.log("model");
-    console.log(model);
-  }
 
   const modelOptions = models.data.map((model: { id: any; }) => ({
     value: model.id,
