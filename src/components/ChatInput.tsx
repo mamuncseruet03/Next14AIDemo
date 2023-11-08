@@ -19,7 +19,7 @@ const ChatInput = ({ chatId }: Props) => {
   const { data: session } = useSession();
 
   const { data: model } = useSWR("model", {
-    fallbackData: "gpt-3.5-turbos",
+    fallbackData: "gpt-3.5-turbo-16k",
   });
 
   const sendMessage = async (e: FormEvent<HTMLFormElement>) => {
